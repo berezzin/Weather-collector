@@ -8,7 +8,7 @@ class City(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(20), nullable=False, unique=True)
-    latitude = Column(Numeric(precision=5, scale=5, asdecimal=False), nullable=False)
-    longitude = Column(Numeric(precision=5, scale=5, asdecimal=False), nullable=False)
+    latitude = Column(Numeric(precision=9, scale=5, asdecimal=False), nullable=False)
+    longitude = Column(Numeric(precision=9, scale=5, asdecimal=False), nullable=False)
     country = Column(String(3), nullable=False)
     population = Column(Integer, nullable=False)
