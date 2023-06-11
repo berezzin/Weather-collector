@@ -7,7 +7,7 @@ class City(Base):
     __tablename__ = 'city'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(20), nullable=False)
+    name = Column(String(20), nullable=False, unique=True)
     latitude = Column(Numeric(precision=5, scale=5, asdecimal=False), nullable=False)
     longitude = Column(Numeric(precision=5, scale=5, asdecimal=False), nullable=False)
     country = Column(String(3), nullable=False)
