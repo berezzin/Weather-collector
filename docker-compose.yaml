@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  weather_db:
+    container_name: 'weather_db'
+    image: postgres:14.7-alpine
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - ${DB_PORT}:5432
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
