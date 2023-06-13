@@ -7,7 +7,7 @@ class Weather(Base):
     __tablename__ = 'weather'
 
     id = Column(Integer, primary_key=True)
-    city_id = Column(Integer, ForeignKey('city.id'))
+    city_id = Column(Integer, ForeignKey('city.id'), nullable=False)
     weather_datetime = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
     temp = Column(Numeric(precision=6, scale=3, asdecimal=False), comment='Units: Celsius')
     temp_min = Column(Numeric(precision=6, scale=3, asdecimal=False), comment='Units: Celsius')
