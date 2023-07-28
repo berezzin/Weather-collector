@@ -16,6 +16,7 @@ class CityService(BaseService):
         self.request_headers: dict = request_headers
 
     async def execute(self, params=None):
+        # This function calls recursively cuz need to escape API restrictions of 30 max limit results in response
         if params is None:
             params = {'min_population': 1, 'limit': 30}
         await super().execute()
