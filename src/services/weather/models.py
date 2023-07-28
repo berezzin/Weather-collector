@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, TIMESTAMP, text, Numeric, String
+from sqlalchemy import Column, Integer, ForeignKey, TIMESTAMP, text, Numeric, String, JSON
 
 from src.database import Base
 
@@ -16,7 +16,7 @@ class Weather(Base):
     humidity = Column(Integer, comment='Units: %')
     visibility = Column(Integer, comment='Units: meter')
     wind_speed = Column(Numeric(precision=4, scale=2, asdecimal=False), comment='Units: meter/sec')
-    rain = Column(String(25), comment='Units: mm')
-    snow = Column(String(25), comment='Units: mm')
+    rain = Column(JSON, comment='Units: mm')
+    snow = Column(JSON, comment='Units: mm')
     clouds = Column(Integer, comment='Units: %')
 
