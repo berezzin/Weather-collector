@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  weather_app:
+    container_name: 'weather_app'
+    build:
+      context: .
+    command: [ '/app/docker/app.sh' ]
+    env_file:
+      - .env-non-dev
+    depends_on:
+      weather_db:
+        condition: service_healthy
+      weather_redis:
+        condition: service_started
+    networks:
+      - custom
+    restart: on-failure
+
+  weather_db:
+    container_name: 'weather_db'
+    image: postgres:14.7-alpine
+    env_file:
+      - .env-non-dev
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 1s
+      retries: 10
+    ports:
+      - ${DB_PORT}:5432
+    networks:
+      - custom
+
+  weather_redis:
+    container_name: 'weather_redis'
+    image: redis:alpine
+    env_file:
+      - .env-non-dev
+    ports:
+      - ${REDIS_PORT}:6379
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge

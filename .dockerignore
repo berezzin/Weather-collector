@@ -1,1 +1,7 @@
-.env?
+.env
+.env-non-dev
+docker-compose.yaml
+.idea
+venv
+.git
+.gitignore
