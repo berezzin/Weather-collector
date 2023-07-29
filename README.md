@@ -6,6 +6,7 @@ This service is provided using the following technology stack:
 * Redis
 * SQLAlchemy
 * Alembic
+* Pydantic
 
 If you are impressed and want to deploy this wonderfull service on your server you just need 3 steps:
 
