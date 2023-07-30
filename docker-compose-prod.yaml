@@ -5,7 +5,6 @@ services:
     container_name: 'weather_app'
     build:
       context: .
-    command: [ '/app/docker/app.sh' ]
     env_file:
       - .env-non-dev
     depends_on:

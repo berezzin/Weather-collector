@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["berezzin <biarezzin@gmail.com>"]
 readme = "README.md"
-packages = [{include = "weather_collector"}]
+packages = [{ include = "weather_collector" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"

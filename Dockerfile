@@ -11,3 +11,5 @@ COPY poetry.lock pyproject.toml ./
 RUN poetry install --no-root
 
 COPY . .
+
+CMD poetry run alembic upgrade head && poetry run celery -A main worker -B -l INFO
