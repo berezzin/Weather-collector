@@ -4,10 +4,10 @@ RUN mkdir 'app'
 
 WORKDIR /app
 
-COPY requirements.txt .
+RUN pip install poetry
 
-RUN pip install -r requirements.txt
+COPY poetry.lock pyproject.toml ./
+
+RUN poetry install --no-root
 
 COPY . .
-
-#RUN chmod a+x docker/*.sh

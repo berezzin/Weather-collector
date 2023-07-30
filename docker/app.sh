@@ -1,5 +1,5 @@
 #!/bin/bash
 
-alembic upgrade head
+poetry run alembic upgrade head
 
-celery -A main worker -B -l INFO
+poetry run celery -A main worker -B -l INFO
